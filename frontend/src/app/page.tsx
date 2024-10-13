@@ -17,7 +17,7 @@ export default function Home() {
           <li>
             Get started by editing <code>src/app/page.tsx</code>.
           </li>
-          <li>Save and see your changes instantly.</li>
+          <li>Save and see your changes instantly 99999999.</li>
         </ol>
 
         <div className={styles.ctas}>
@@ -42,7 +42,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className={styles.secondary}
           >
-            Read our docs
+            Read our docs 55555
           </a>
         </div>
       </main>

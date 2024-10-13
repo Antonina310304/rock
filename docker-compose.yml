@@ -1,11 +1,14 @@
 services:
 
   db:
-    image: postgres
+    image: postgres:17.0
     restart: always
     # set shared memory limit when using docker-compose
     shm_size: 128mb
     # or set shared memory limit when deploy via swarm stack
+    volumes:
+      - ./database/initdb:/docker-entrypoint-initdb.d
+      - ./database/data:/var/lib/postgresql/data
     #volumes:
     #  - type: tmpfs
     #    target: /dev/shm
@@ -35,6 +38,7 @@ services:
       - sh
       - -c
       - |
+        apt-get update -y && apt-get install -y openssl
         npm i
         npm run start
     ports:
