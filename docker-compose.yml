@@ -35,6 +35,7 @@ services:
       - sh
       - -c
       - |
+        npm i
         npm run start
     ports:
       - 3000:3000
@@ -48,6 +49,7 @@ services:
       - sh
       - -c
       - |
+        npm i
         npm run build
         npm run start
     stdin_open: true # docker run -i #
