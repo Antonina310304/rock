@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = postgresql://postgres:postgres@db:5432/postgres
 }
 
 model User {
@@ -26,6 +26,7 @@ model Post {
 
   @@id([uuid, id])
 }
+
 model Profile {
   id     Int     @id @default(autoincrement())
   bio    String?

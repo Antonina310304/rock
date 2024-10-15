@@ -41,6 +41,7 @@ services:
         apt-get update -y && apt-get install -y openssl
         npm i
         npm run start
+        npx prisma migrate dev
     ports:
       - 3000:3000
 
