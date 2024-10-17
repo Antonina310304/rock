@@ -27,7 +27,9 @@ services:
 
   
   backend:
-    image: node:20.18-slim
+    build:
+      dockerfile: ./Dockerfile_NodeSSL
+    image: node_ssl:20.18-slim
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     restart: always
@@ -38,7 +40,6 @@ services:
       - sh
       - -c
       - |
-        apt-get update -y && apt-get install -y openssl
         npm i
         npm run start
         npx prisma migrate dev
