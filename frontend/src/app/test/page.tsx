@@ -1,15 +1,20 @@
+import WorkoutResponse from "@rock/shared";
+import {WorkoutService} from "@/api/service";
+import {notFound} from "next/navigation";
+
 export default async function Page() {
-    const posts: string[] = []
+    let workoutList: WorkoutResponse = {} as WorkoutResponse
     try {
-        const data: Response = await fetch('http://localhost:3000/get-exercise')
-        posts.push(...await data.json())
+        const data: Response = await WorkoutService.getWorkoutList();
+        workoutList = await data.json();
     } catch (e) {
-        console.log(e)
+        console.info(e.message)
+        return notFound()
     }
 
     return (
-        <ul>
-            {posts.length}
-        </ul>
+        <div>
+            {JSON.stringify(workoutList)}
+        </div>
     )
 }

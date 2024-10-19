@@ -59,7 +59,7 @@ services:
         cd frontend
         npm i
         npm run build
-        npm run start
+        npm run dev
     stdin_open: true # docker run -i #
     tty: true        # docker run -t
     restart: always

@@ -16,3 +16,5 @@ export interface Workout {
     comments: string;
     exercise: Exercise[];
 }
+
+export type WorkoutResponse = Record<string, Workout>
