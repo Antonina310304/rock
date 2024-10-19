@@ -17,4 +17,4 @@ export interface Workout {
     exercise: Exercise[];
 }
 
-export type WorkoutResponse = Record<string, Workout>
+export type WorkoutResponse = Record<string, Workout[]>

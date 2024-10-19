@@ -10,7 +10,8 @@ export class WorkoutRepository {
   async getExerciseListByUser(useId: string): Promise<WorkoutListInterface[]> {
     return await this.prisma.$queryRaw(Prisma.sql`
             SELECT w.id as "workoutId",
-                   date_trunc('day', w.date)::date as date,
+                   -- date_trunc('day', w.date)::varchar as date,
+                   TO_CHAR(w.date::date, 'YYYY-MM-DD') as date,
                    w.cardio,
                    w.comments as "workoutComments",
                    e.id      as "exerciseId",

@@ -43,7 +43,6 @@ services:
         npm i
         npm run start:shared
         npm run start:dev
-        npx prisma migrate dev
     ports:
       - 3000:3000
 

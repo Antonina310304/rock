@@ -1,10 +1,11 @@
 import WorkoutResponse from "@rock/shared";
 import {WorkoutService} from "@/api/service";
 import {notFound} from "next/navigation";
+import WorkoutList from "@/app/test/workout-list";
 
 export default async function Page() {
     let workoutList: WorkoutResponse = {} as WorkoutResponse
-    try {g
+    try {
         const data: Response = await WorkoutService.getWorkoutList();
         workoutList = await data.json();
     } catch (e) {
@@ -14,7 +15,7 @@ export default async function Page() {
 
     return (
         <div>
-            {JSON.stringify(workoutList)}
+            <WorkoutList workout={workoutList}></WorkoutList>
         </div>
     )
 }
