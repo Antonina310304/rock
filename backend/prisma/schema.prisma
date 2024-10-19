@@ -1,34 +1,50 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  extensions = [uuidOssp(map: "uuid-ossp")]
+}
+model user {
+  id    String    @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+  email String
+  workout workout[]
 }
 
-model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  profile Profile?
+model workout {
+  id    String    @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+  date DateTime
+  user   user     @relation(fields: [user_id], references: [id])
+  user_id String  @db.Uuid
+  comments String?
+  exercise exercise[]
+  cardio Int
 }
 
-model Post {
-  uuid      String   @default(uuid())
-  id        Int      @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  content   String?
-  published Boolean  @default(false)
-  authorId  Int
-
-  @@id([uuid, id])
+model exercise_map {
+    id       String      @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+    title    String
+    exercise exercise[]
 }
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
+
+model exercise {
+    id         String      @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+    workout    workout     @relation(fields: [workout_id], references: [id])
+    workout_id String  @db.Uuid
+    exercise    exercise_map     @relation(fields: [exercise_id], references: [id])
+    exercise_id String  @db.Uuid
+    comments String?
+    approach approach[]
+}
+
+model approach {
+    exercise   exercise   @relation(fields: [exercise_id], references: [id])
+    exercise_id   String  @db.Uuid
+    approach Int
+    weight Int
+    comments String?
+    @@id([exercise_id, approach])
 }

@@ -25,7 +25,6 @@ services:
   #   ports:
   #     - 8090:8080
 
-  
   backend:
     image: node:20.18-slim
     stdin_open: true # docker run -i
@@ -33,14 +32,17 @@ services:
     restart: always
     working_dir: /app
     volumes:
-      - ./backend:/app:cached
+      - ./backend:/app/backend:cached
+      - ./shared:/app/shared:cached
     command:
       - sh
       - -c
       - |
         apt-get update -y && apt-get install -y openssl
+        cd backend
         npm i
-        npm run start
+        npm run start:shared
+        npm run start:dev
     ports:
       - 3000:3000
 
@@ -48,11 +50,13 @@ services:
     image: node:20.18-slim
     working_dir: /app
     volumes:
-      - ./frontend:/app:cached
+      - ./frontend:/app/frontend:cached
+      - ./shared:/app/shared:cached
     command:
       - sh
       - -c
       - |
+        cd frontend
         npm i
         npm run build
         npm run start
