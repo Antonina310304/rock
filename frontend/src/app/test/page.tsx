@@ -4,7 +4,7 @@ import {notFound} from "next/navigation";
 
 export default async function Page() {
     let workoutList: WorkoutResponse = {} as WorkoutResponse
-    try {
+    try {g
         const data: Response = await WorkoutService.getWorkoutList();
         workoutList = await data.json();
     } catch (e) {
