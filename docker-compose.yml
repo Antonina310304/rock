@@ -34,7 +34,6 @@ services:
     volumes:
       - ./backend:/app/backend:cached
       - ./shared:/app/shared:cached
-      - ./common:/app/common
     command:
       - sh
       - -c
@@ -53,7 +52,6 @@ services:
     volumes:
       - ./frontend:/app/frontend:cached
       - ./shared:/app/shared:cached
-      - ./common:/app/common
     command:
       - sh
       - -c
