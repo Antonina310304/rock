@@ -1,13 +1,15 @@
+import { ReactNode } from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./common.scss";
+import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 
-const geistSans = localFont({
+const geistSans: NextFontWithVariable = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900"
 });
-const geistMono = localFont({
+const geistMono: NextFontWithVariable = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900"
@@ -22,7 +24,7 @@ export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): ReactNode {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
