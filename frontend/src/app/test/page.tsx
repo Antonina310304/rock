@@ -1,21 +1,23 @@
-import WorkoutResponse from "@rock/shared";
-import {notFound} from "next/navigation";
-import {WorkoutService} from "~/api/service";
+import { WorkoutResponse } from "@rock/shared";
+import { notFound } from "next/navigation";
+import { ReactNode } from "react";
+
+import { WorkoutService } from "~/api/service";
 import WorkoutList from "~/app/test/workout-list";
 
-export default async function Page() {
-    let workoutList: WorkoutResponse = {} as WorkoutResponse
-    try {
-        const data: Response = await WorkoutService.getWorkoutList();
-        workoutList = await data.json();
-    } catch (e) {
-        console.info(e.message)
-        return notFound()
-    }
+export default async function Page(): Promise<ReactNode> {
+  let workoutList: WorkoutResponse = {} as WorkoutResponse;
+  try {
+    const data: Response = await WorkoutService.getWorkoutList();
+    workoutList = (await data.json()) as WorkoutResponse;
+  } catch (e) {
+    console.info((e as Error).message);
+    return notFound();
+  }
 
-    return (
-        <div>
-            <WorkoutList workout={workoutList}></WorkoutList>
-        </div>
-    )
+  return (
+    <div>
+      <WorkoutList workout={workoutList} />
+    </div>
+  );
 }

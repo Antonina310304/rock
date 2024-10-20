@@ -1,27 +1,79 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "useUnknownInCatchVariables": false, // Возможно необходимо удаление
+    // "declaration": true,
+    // "strict": true
+    // "forceConsistentCasingInFileNames": true,
+    // "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "rootDir": ".",
     "baseUrl": ".",
     "outDir": "build",
-    "jsx": "react",
-    "lib": ["dom", "es7", "es2017", "esnext", "esnext.intl", "es2017.intl", "es2018.intl"],
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es7",
+      "es2017",
+      "esnext",
+      "esnext.intl",
+      "es2017.intl",
+      "es2018.intl"
+    ],
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": [
+        "src/*"
+      ]
     },
-    "skipLibCheck": true,
-    "sourceMap": true,
     "inlineSources": true,
     "sourceRoot": "/",
     "declaration": false,
-    "typeRoots": ["src/typings", "node_modules/@types"],
+    "typeRoots": [
+      "src/typings",
+      "node_modules/@types"
+    ],
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "useUnknownInCatchVariables": false,
     "strictNullChecks": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      },
+      {
+        "name": "next"
+      }
+    ],
+    "allowJs": true,
+    "noEmit": true,
+    "isolatedModules": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "build", ".vscode", "**/*.style.d.ts"],
-  "references": [{ "path": "../shared" }]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    ".vscode",
+    "**/*.style.d.ts"
+  ],
+  "references": [
+    {
+      "path": "../shared"
+    }
+  ]
 }

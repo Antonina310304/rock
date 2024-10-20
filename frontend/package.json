@@ -12,8 +12,7 @@
     "react": "18",
     "react-dom": "18",
     "next": "14.2.15",
-    "@rock/shared": "file:../shared/",
-    "eslint-plugin-import": "2.31.0"
+    "@rock/shared": "file:../shared/"
   },
   "devDependencies": {
     "typescript": "5",
@@ -25,7 +24,9 @@
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-prettier": "5.2.1",
-    "eslint-plugin-react": "7.37.1"
+    "eslint-plugin-react": "7.37.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.6.3"
   },
   "prettier": {
     "printWidth": 120,

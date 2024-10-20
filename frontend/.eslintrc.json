@@ -29,7 +29,7 @@
         "project": "./tsconfig.json"
       },
       "alias": {
-        "map": ["@rock/shared", "../shared/src"],
+        "map": [["@rock/shared", "../shared/src"]],
         "extensions": [".ts", ".tsx", ".d.ts", ".js", ".jsx"]
       }
     }
