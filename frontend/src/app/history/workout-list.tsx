@@ -1,8 +1,9 @@
 "use client";
-import { WorkoutResponse } from "@rock/shared";
 import { FC } from "react";
+import { WorkoutResponse } from "@rock/shared";
 
 import Exercises from "~/app/history/exercise";
+import { DatesFormat } from "~/utils/dates-format";
 
 type WorkoutListProps = {
   workout: WorkoutResponse;
@@ -14,7 +15,7 @@ const WorkoutList: FC<WorkoutListProps> = ({ workout }: WorkoutListProps) => {
       {Object.keys(workout).map((date) => {
         return (
           <li key={date}>
-            <div>дата: {date}</div>
+            <div>дата: {DatesFormat.userLocalFormat(date)}</div>
             <p>тренировки:</p>
             <ul>
               {workout[date].map((workout) => {
