@@ -2,7 +2,7 @@
 import { WorkoutResponse } from "@rock/shared";
 import { FC } from "react";
 
-import Exercises from "~/app/test/exercise";
+import Exercises from "~/app/history/exercise";
 
 type WorkoutListProps = {
   workout: WorkoutResponse;
