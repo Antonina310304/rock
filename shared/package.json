@@ -3,8 +3,5 @@
   "private": true,
   "source": "src/index.ts",
   "main": "build/src/index.js",
-  "typings": "build/src/index.d.ts",
-  "config": {
-    "access": "private"
-  }
+  "typings": "build/src/index.d.ts"
 }

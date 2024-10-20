@@ -1,7 +1,7 @@
 import WorkoutResponse from "@rock/shared";
-import {WorkoutService} from "@/api/service";
 import {notFound} from "next/navigation";
-import WorkoutList from "@/app/test/workout-list";
+import {WorkoutService} from "~/api/service";
+import WorkoutList from "~/app/test/workout-list";
 
 export default async function Page() {
     let workoutList: WorkoutResponse = {} as WorkoutResponse

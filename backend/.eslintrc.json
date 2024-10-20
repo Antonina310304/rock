@@ -26,18 +26,19 @@
   "settings": {
     "import/resolver": {
       "typescript": {
-        "project": "./tsconfig.json"
+        "project": "./backend/tsconfig.json"
       },
       "alias": {
-        "map": ["@rock/shared", "../shared/src"],
+        "map": [["@rock/shared", "../shared/src"]],
         "extensions": [".ts", ".tsx", ".d.ts", ".js", ".jsx"]
       }
     }
   },
   "ignorePatterns": [
-    "node_modules",
-    "build",
-    "*/*-cache",
+    "*/*/node_modules",
+    "*/*/build",
+    "*/*/dist",
+    "*/*/*-cache",
     "data/"
   ],
   "plugins": ["@typescript-eslint", "prettier", "import"],
@@ -60,12 +61,6 @@
       "error",
       {
         "newlines-between": "always"
-      }
-    ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": ["tests/**"]
       }
     ],
     "no-duplicate-imports": "error",

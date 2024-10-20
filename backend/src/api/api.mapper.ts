@@ -1,11 +1,9 @@
-import { WorkoutListInterface } from '../common/repositories/workout/workout.types';
-import { Approach, Exercise, Workout } from './types';
+import { WorkoutListInterface } from "../common/repositories/workout/workout.types";
+
+import { Approach, Exercise, Workout } from "./types";
 
 export class ApiMapper {
-  static mapWorkout(
-    response: WorkoutListInterface[],
-    destination: Record<string, Workout[]>,
-  ) {
+  static mapWorkout(response: WorkoutListInterface[], destination: Record<string, Workout[]>): void {
     const exercise: Record<string, Record<string, Exercise>> = {};
     const approach: Record<string, Approach[]> = {};
 
@@ -15,8 +13,8 @@ export class ApiMapper {
         {
           approach: workout.approach,
           comments: workout.approachComments,
-          weight: workout.weight,
-        },
+          weight: workout.weight
+        }
       ];
 
       exercise[workout.workoutId] = {
@@ -26,20 +24,18 @@ export class ApiMapper {
           exercise: workout.exercise,
           comments: workout.comments,
           // могут приходить подходы со всеми полями null
-          approach: Object.values(approach[workout.exerciseId]).filter(
-            (approach) => approach.approach && approach.weight,
-          ),
-        },
+          approach: approach[workout.exerciseId].filter((approach) => approach.approach && approach.weight)
+        }
       };
 
       destination[workout.date] = [
-        ...(workout[workout.date] ?? []),
+        ...(destination[workout.date] ?? []),
         {
           id: workout.workoutId,
           date: workout.date,
           comments: workout.workoutComments,
-          exercise: Object.values(exercise[workout.workoutId]),
-        },
+          exercise: Object.values(exercise[workout.workoutId])
+        }
       ];
     });
   }

@@ -1,7 +1,9 @@
-import { DatabaseService } from '../../database/database.service';
-import { Injectable } from '@nestjs/common';
-import { WorkoutListInterface } from './workout.types';
-import { Prisma } from '@prisma/client';
+import { Injectable } from "@nestjs/common";
+import { Prisma } from "@prisma/client";
+
+import { DatabaseService } from "../../database/database.service";
+
+import { WorkoutListInterface } from "./workout.types";
 
 @Injectable()
 export class WorkoutRepository {
