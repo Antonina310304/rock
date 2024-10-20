@@ -20,7 +20,7 @@
     // "declaration": true,
     // "strict": true
     // "forceConsistentCasingInFileNames": true,
-    // "strictNullChecks": true,
+    "strictNullChecks": true,
     "strictPropertyInitialization": false,
     "outDir": "build",
     "rootDir": ".",

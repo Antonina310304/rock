@@ -6,6 +6,7 @@ export class ApiMapper {
   static mapWorkout(response: WorkoutListInterface[], destination: Record<string, Workout[]>): void {
     const exercise: Record<string, Record<string, Exercise>> = {};
     const approach: Record<string, Approach[]> = {};
+    const workoutList: Record<string, Record<string, Workout>> = {};
 
     response.forEach((workout: WorkoutListInterface) => {
       approach[workout.exerciseId] = [
@@ -28,15 +29,17 @@ export class ApiMapper {
         }
       };
 
-      destination[workout.date] = [
-        ...(destination[workout.date] ?? []),
-        {
+      workoutList[workout.date] = {
+        ...(workoutList[workout.date] ?? {}),
+        [workout.workoutId]: {
           id: workout.workoutId,
           date: workout.date,
           comments: workout.workoutComments,
           exercise: Object.values(exercise[workout.workoutId])
         }
-      ];
+      };
+
+      destination[workout.date] = Object.values(workoutList[workout.date]);
     });
   }
 }
