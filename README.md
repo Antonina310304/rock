@@ -7,6 +7,9 @@
     npx prisma migrate dev --create-only
     npx prisma migrate dev
 
+## применить все миграции
+    npx prisma migrate dev
+
 ## убить контейнер
     docker compose rm
     

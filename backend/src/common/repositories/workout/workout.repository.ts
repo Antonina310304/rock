@@ -10,6 +10,32 @@ export class WorkoutRepository {
   constructor(private readonly prisma: DatabaseService) {}
 
   async getExerciseListByUser(useId: string): Promise<WorkoutListInterface[]> {
+    //   return await this.prisma.approach.findMany({
+    //     select: {
+    //       weight: true,
+    //       approach: true,
+    //       comments: true,
+    //       exercise: {
+    //         select: {
+    //           exercise_id: true,
+    //           exercise: {
+    //             select: {
+    //               title: true,
+    //             }
+    //           },
+    //           workout: {
+    //             select: {
+    //               id: true,
+    //               cardio: true,
+    //               date: true,
+    //               comments: true
+    //             }
+    //           }
+    //         }
+    //       }
+    //     },
+    //   })
+
     return await this.prisma.$queryRaw(Prisma.sql`
             SELECT w.id as "workoutId",
                    -- date_trunc('day', w.date)::varchar as date,
@@ -17,7 +43,6 @@ export class WorkoutRepository {
                    w.cardio,
                    w.comments as "workoutComments",
                    e.id      as "exerciseId",
-                   em.title   as exercise,
                    e.comments as "exerciseComments",
                    a.approach,
                    a.comments as "approachComments",

@@ -5,7 +5,6 @@ export interface Approach {
 }
 export interface Exercise {
   exerciseId: string;
-  exercise: string;
   comments: string;
   approach: Approach[];
 }

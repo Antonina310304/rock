@@ -3,7 +3,6 @@ export interface WorkoutListInterface {
   date: string;
   workoutComments: string;
   exerciseId: string;
-  exercise: string;
   exerciseComments: string;
   approach: number;
   comments: string;

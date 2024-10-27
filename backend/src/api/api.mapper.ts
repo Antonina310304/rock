@@ -22,7 +22,6 @@ export class ApiMapper {
         ...(exercise[workout.workoutId] ?? {}),
         [workout.exerciseId]: {
           exerciseId: workout.exerciseId,
-          exercise: workout.exercise,
           comments: workout.comments,
           // могут приходить подходы со всеми полями null
           approach: approach[workout.exerciseId].filter((approach) => approach.approach && approach.weight)

@@ -1,6 +1,8 @@
 import { Controller, Get } from "@nestjs/common";
 import { WorkoutResponse } from "@rock/shared";
 
+import { ExerciseMapType } from "../common/repositories/exercise-map/exercise-map.type";
+
 import { ApiService } from "./api.service";
 
 @Controller()
@@ -10,5 +12,10 @@ export class ApiController {
   @Get("get-exercise")
   async getExerciseListByUser(): Promise<WorkoutResponse> {
     return await this.apiService.getExerciseListByUser("117636cf-73b0-4be0-988f-08c14171708f");
+  }
+
+  @Get("exercise-list")
+  async getExerciseList(): Promise<ExerciseMapType[]> {
+    return await this.apiService.getExerciseMap();
   }
 }

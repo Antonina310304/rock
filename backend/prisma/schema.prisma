@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["postgresqlExtensions"]
+  previewFeatures = ["postgresqlExtensions", "relationJoins" ]
 }
 
 datasource db {
@@ -24,17 +24,18 @@ model workout {
   cardio Int
 }
 
-model exercise_map {
+model exerciseMap {
     id       String      @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
     title    String
     exercise exercise[]
+    @@map("exercise_map")
 }
 
 model exercise {
     id         String      @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
     workout    workout     @relation(fields: [workout_id], references: [id])
     workout_id String  @db.Uuid
-    exercise    exercise_map     @relation(fields: [exercise_id], references: [id])
+    exercise    exerciseMap     @relation(fields: [exercise_id], references: [id])
     exercise_id String  @db.Uuid
     comments String?
     approach approach[]
